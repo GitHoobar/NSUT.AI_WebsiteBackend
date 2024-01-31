@@ -12,7 +12,7 @@ ConnectToMongoose()
 app.use("/members",require("./routes/v1/member"))
 app.use("/events",require("./routes/v1/event"))
 app.use("/blogs",require("./routes/v1/blog"))
-// app.use("/projects",require("./routes/v1/project"))
+app.use("/projects",require("./routes/v1/project"))
 app.use("/admin",require("./routes/v1/admin"))
 app.listen(port, ()=>{
     console.log(`listening on ${port}`)

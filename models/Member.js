@@ -35,7 +35,7 @@ const MemberSchema= new mongoose.Schema({
     projects:{
         type:[{
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'event'
+            ref: 'project'
           }],
           require:false,
     }
