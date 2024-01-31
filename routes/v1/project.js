@@ -6,7 +6,7 @@ const { getproject } = require('../../middlewares/getproject');
 router.use(express.json());
 
 //for url localhost::3000/projects/
-router.get('/', getAllProjects);
+router.get('/all', getAllProjects);
 router.post('/create',addProject);
 
 //for url localhost::3000/projects/id

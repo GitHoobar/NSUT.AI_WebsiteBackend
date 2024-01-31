@@ -22,8 +22,8 @@ exports.handleGetSingleMember= async(req,res)=>{
 }
 exports.handleCreateMember= async(req,res)=>{
     try{
-    let {name, bio, image, department, achievements, social , projects}= req.body
-    let member= await Member.create({name, bio, image, department, achievements, social,projects})
+    let {name,email,  bio, image, department, achievements, social , projects}= req.body
+    let member= await Member.create({name,email, bio, image, department, achievements, social,projects})
     res.status(200).json(member)
     }
     catch(err){

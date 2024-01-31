@@ -1,6 +1,6 @@
-const {Schema,model} = require("mongoose")
+const mongoose= require("mongoose")
 
-const blogSchema = new Schema({
+const blogSchema = new mongoose.Schema({
     author:{
         type:String,
         required:true
@@ -16,18 +16,25 @@ const blogSchema = new Schema({
     image:{
         type:String,
     },
-    published_date:{
+    publishedDate:{
         type:Date,
         default:Date.now
     },
-    comment:[{type:String}],
-    description:{
-        type:String,
-        required:true
-    }
+    comments:{
+        type:[
+            { 
+                user:{type:mongoose.Schema.Types.ObjectId,ref:"Member"},
+                comment:String,
+                _id:false  
+                
+            }
+        ],
+        require:false
+    },
+    slug:{type:String, require:true,unique:true}
 
 },{timestamps:true})
 
 
 
-module.exports= model("Blog",blogSchema) 
+module.exports= mongoose.model("Blog",blogSchema) 
