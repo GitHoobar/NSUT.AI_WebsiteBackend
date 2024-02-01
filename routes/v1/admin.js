@@ -46,7 +46,8 @@ router.post("/login",async(req,res)=>{
         let isPasswordCorrect= await bcrypt.compare(password,admin.password)
         
         //make token
-        var token = jwt.sign({user:{email:admin.email, password:admin.password}}, secret);
+        var token = jwt.sign({admin:{id:admin._id}}, secret);
+        
         // if matches
         if(!isPasswordCorrect){
             
@@ -64,13 +65,5 @@ router.post("/login",async(req,res)=>{
     })
 
 
-router.post("/getuserbytoken",(req,res)=>{
-    ///get token from req
-        let {token}= req.body
-        // verify the token details
-        let admin= jwt.verify(token, secret)
-        //send the decoded token details
-        res.send(admin)
 
-    })
     module.exports=router

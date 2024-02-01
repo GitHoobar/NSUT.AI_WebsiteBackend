@@ -16,12 +16,12 @@ exports.getSingleEvent= async(req,res)=>{
 
 exports.createEvent=async(req,res)=>{
     const event = new Event({
-      Title: req.body.Title,
-      Description: req.body.Description,
-      Date: req.body.Date,
-      Venue: req.body.Venue,
-      Image: req.body.Image,
-      Status: req.body.Status
+      title: req.body.title,
+      description: req.body.description,
+      date: req.body.date,
+      venue: req.body.venue,
+      image: req.body.image,
+      status: req.body.status
     });
     try{
         const newEvent = await event.save();
@@ -32,23 +32,23 @@ exports.createEvent=async(req,res)=>{
 }
 
 exports.updateEvent= async(req,res)=>{
-     if (req.body.Title != null) {
-       res.event.Title = req.body.Title;
+     if (req.body.title != null) {
+       res.event.title = req.body.title;
      }
-     if (req.body.Description != null) {
-        res.event.Description = req.body.Description;
+     if (req.body.description != null) {
+        res.event.description = req.body.description;
       }
-     if (req.body.Date != null) {
-         res.event.Date = req.body.Date;
+     if (req.body.date != null) {
+         res.event.date = req.body.date;
        }
-     if (req.body.Venue != null) {
-          res.event.Venue = req.body.Venue;
+     if (req.body.venue != null) {
+          res.event.venue = req.body.venue;
         }
-     if (req.body.Image != null) {
-           res.event.Image = req.body.Image;
+     if (req.body.image != null) {
+           res.event.image = req.body.image;
          }
-     if (req.body.Status != null) {
-            res.event.Status = req.body.Status;
+     if (req.body.status != null) {
+            res.event.status = req.body.status;
           }
      try{
         const updatedEvent=await res.event.save();

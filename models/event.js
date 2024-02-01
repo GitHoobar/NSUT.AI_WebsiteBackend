@@ -1,28 +1,28 @@
 const mongoose=require('mongoose')
 
 const eventSchema = new mongoose.Schema({
- Title:{
+ title:{
     type:String,
     required:true
  },
- Description:{
+ description:{
     type:String,
     required:true
  },
- Date:{
+ date:{
     type:Date,
     required:true,
     default:Date.now
  },
- Venue:{
+ venue:{
     type:String,
     required:true,
  },
- Image:{
+ image:{
     type:String,
     required:true
  },
- Status:{
+ status:{
     type:Boolean,
     required:true,
     default:false
