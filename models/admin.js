@@ -12,6 +12,10 @@ const AdminSchema = new Schema({
    password:{
       type:String,
       required:true
+   },
+   username:{
+      type:String,
+      require:true
    }
 
 },{timestamps:true}

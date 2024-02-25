@@ -26,9 +26,11 @@ catch(err){
 }
 }
 exports.handleDeleteBlog=async (req,res) => {
+  try{
+
     const id = req.params.id
     if(res.admin){
-
+      
       const blogId = await Blog.findByIdAndDelete(id)
       res.json({message:'Blog Deleted',"success":true})
     }
@@ -36,12 +38,36 @@ exports.handleDeleteBlog=async (req,res) => {
       res.status(500).json({eror:"Unauthorised"})
     }
   }
+  catch(err){
+    console.log(err)
+    res.status(400).json({error:err, success:false})
+  }
+  }
 exports.handleGetBlog=async (req,res) => {
+  try{
+
     const id = req.params.id
     const blogId = await Blog.findById(id)
-     res.json(blogId)
-}
+    res.json(blogId)
+  }
+  catch(err){
+    console.log(err)
+    res.status(400).json({error:err, success:false})
+  }
+  }
 exports.handleGetBlogs=async(req,res) => {
     const blogs = await Blog.find()
     res.json(blogs)
  }
+exports.handleUpdateBlog=async(req,res)=>{
+  const id = req.params.id
+  const update = req.body
+  try{
+    const blogId = await Blog.updateOne(
+      { _id: id },
+      { $set: update })
+    return res.status(200).json({"sucess":blogId.acknowledged})
+  }catch(error){
+    return res.status(500).json({message:error})
+  }
+}
