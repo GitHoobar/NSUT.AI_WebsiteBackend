@@ -4,6 +4,7 @@ const Admin = require("../../models/admin")
 const router = express()
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+const checkAdmin= require("../../middlewares/checkAdmin");
 const secret = "KHUSHAL"
 router.post("/create", async (req, res) => {
     try {
@@ -29,9 +30,13 @@ router.post("/create", async (req, res) => {
     }
 })
 
-router.post("/login", async (req, res) => {
+router.post("/login",checkAdmin, async (req, res) => {
     try {
-
+        if(res.admin){
+            console.log(res.admin)
+            res.status(200).json({token:req.header("token"),admin:{id:res.admin._id,username:res.admin.username, email:res.admin.email}})
+            return ;
+        }
         // get credentials from user
         let { email, password } = req.body
 
