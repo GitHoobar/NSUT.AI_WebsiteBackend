@@ -5,6 +5,9 @@ const secret= "KHUSHAL"
 const getAdmin= async(req,res,next)=>{
     try{
         const token= req.header("token")
+        if(!token){
+            res.status(400).json({success:false, error:"Token Not Found"})
+        }
     console.log(token)
     //decoding the token
     const decodedinfo = await jwt.verify(token,secret)
@@ -15,8 +18,9 @@ const getAdmin= async(req,res,next)=>{
     }
     }
     catch(err){
-        console.log("error")
+        console.log("error: ",err)
         res.status(400).json({error:"Internal Server Error"})
+        return;
     }
     next()
 }

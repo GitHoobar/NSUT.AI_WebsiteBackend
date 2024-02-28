@@ -27,8 +27,8 @@ const blogSchema = new mongoose.Schema({
         ],
         require:false
     },
-    slug:{type:String, require:true,unique:true}
-
+    slug:{type:String, require:true,unique:true},
+    description:{type:String, require:true}
 },{timestamps:true})
 
 

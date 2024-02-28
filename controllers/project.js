@@ -25,7 +25,7 @@ exports.addProject = async (req, res, next)=> {
 
     try{
         const newProject = await project.save()
-        res.status(201).json(newProject)
+        res.status(201).json({new:newProject, success:true})
     }catch(error){
         res.status(400).json({message: error.message})
     }
@@ -63,7 +63,7 @@ exports.updateProject = async(req,res,next) => {
 
     try{
         const updatedProject = await res.project.save()
-        res.json(updatedProject)
+        res.json({updatedProject, success:true})
     }catch(error){
         res.status(400).json({message: error.message})
     }
@@ -74,7 +74,7 @@ exports.updateProject = async(req,res,next) => {
 exports.deleteProject= async (req,res)=>{
     try{
         await Project.deleteOne({ _id: req.params.id })
-        res.json({message: 'Deleted project'})
+        res.json({message: 'Deleted project', success:true})
     } catch (error){
         res.status(500).json({message: error.message})
     }

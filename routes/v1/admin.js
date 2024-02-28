@@ -20,7 +20,7 @@ router.post("/create", async (req, res) => {
         //create the account with encrypted password
         let admin = await Admin.create({
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
         })
         res.json(admin)
     }

@@ -17,6 +17,7 @@ app.use("/blogs",require("./routes/v1/blog"))
 app.use("/projects",require("./routes/v1/project"))
 app.use("/admin",require("./routes/v1/admin"))
 app.use("/users",require("./routes/v1/user"))
+app.use("/news",require("./routes/v1/news"))
 app.listen(port, ()=>{
     console.log(`listening on ${port}`)
 })
