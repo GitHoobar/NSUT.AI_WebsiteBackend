@@ -27,7 +27,7 @@ exports.addProject = async (req, res, next)=> {
         const newProject = await project.save()
         res.status(201).json({new:newProject, success:true})
     }catch(error){
-        res.status(400).json({message: error.message})
+        res.status(400).json({error: error.message})
     }
   }
 
