@@ -65,7 +65,7 @@ exports.handleUpdateBlog=async(req,res)=>{
     const blogId = await Blog.updateOne(
       { _id: id },
       { $set: update })
-    return res.status(200).json({"success":blogId.acknowledged, blog:blogId})
+    return res.status(200).json({"success":blogId.acknowledgeda })
   }catch(error){
     return res.status(500).json({message:error})
   }
